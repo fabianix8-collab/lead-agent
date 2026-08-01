@@ -37,13 +37,20 @@ class AirtableConnector:
                 json.dump(data, f, indent=2, ensure_ascii=False)
             return {"status": "ok", "modo": "mock", "record_id": registro["id"]}
 
-        # --- Implementación real (requiere pyairtable) ---
-        # from pyairtable import Api
-        # from config import Config
-        # api = Api(Config.AIRTABLE_API_KEY)
-        # table = api.table(Config.AIRTABLE_BASE_ID, Config.AIRTABLE_TABLE_NAME)
-        # record = table.create(registro)
-        # return {"status": "ok", "modo": "real", "record_id": record["id"]}
-        raise NotImplementedError(
-            "Instala pyairtable y descomenta la implementación real en crm_airtable.py"
-        )
+        from pyairtable import Api
+        from config import Config
+
+        # Mapeo explícito a los nombres de columna de Airtable (deben existir
+        # tal cual en la tabla — ver README, sección "Configurar Airtable real").
+        campos = {
+            "Nombre": nombre,
+            "Email": email,
+            "Empresa": empresa,
+            "Prioridad": prioridad,
+            "Notas": notas,
+        }
+
+        api = Api(Config.AIRTABLE_API_KEY)
+        table = api.table(Config.AIRTABLE_BASE_ID, Config.AIRTABLE_TABLE_NAME)
+        record = table.create(campos)
+        return {"status": "ok", "modo": "real", "record_id": record["id"]}

@@ -161,24 +161,34 @@ class LeadAgentGemini:
             else:
                 log_ejecucion["resumen_final"] = "[límite de turnos alcanzado sin resolución]"
 
-        except (RuntimeError, ErrorPermanente) as e:
-            # Fallback de seguridad: si el LLM falla de forma irrecuperable
-            # (API caída, key inválida, rate limit persistente), el lead NUNCA
-            # queda en el aire — se escala a humano igual, marcando el motivo
-            # como falla técnica en vez de decisión de negocio.
-            resultado_escalamiento = ejecutar_tool("escalar_a_humano", {
-                "motivo": "Falla técnica del agente (LLM no disponible)",
-                "resumen_para_humano": (
-                    f"No se pudo procesar automáticamente el lead de "
-                    f"{lead.get('nombre')} ({lead.get('email')}) por un error "
-                    f"técnico: {e}"
-                ),
-            })
-            log_ejecucion["pasos"].append({
-                "tool": "escalar_a_humano",
-                "input": {"motivo": "falla_tecnica"},
-                "resultado": resultado_escalamiento,
-            })
+        except Exception as e:
+            # Red de seguridad amplia a propósito: cubre tanto fallas del LLM
+            # (ErrorPermanente/RuntimeError tras agotar reintentos) como fallas
+            # de cualquier conector ejecutado dentro del loop (Airtable, Calendar,
+            # Slack caídos o mal configurados). El lead NUNCA debe quedar sin
+            # resolución por una excepción no manejada — siempre se escala,
+            # marcando explícitamente que fue una falla técnica y no una
+            # decisión de negocio, para que quede trazado distinto en el CRM.
+            try:
+                resultado_escalamiento = ejecutar_tool("escalar_a_humano", {
+                    "motivo": "Falla técnica del agente (LLM o conector no disponible)",
+                    "resumen_para_humano": (
+                        f"No se pudo procesar automáticamente el lead de "
+                        f"{lead.get('nombre')} ({lead.get('email')}) por un error "
+                        f"técnico: {e}"
+                    ),
+                })
+                log_ejecucion["pasos"].append({
+                    "tool": "escalar_a_humano",
+                    "input": {"motivo": "falla_tecnica"},
+                    "resultado": resultado_escalamiento,
+                })
+            except Exception as error_escalamiento:
+                # Último recurso: si hasta el escalamiento falla (ej. Slack
+                # también caído), al menos queda constancia en el log local
+                # en vez de perderse silenciosamente.
+                log_ejecucion["error_critico_sin_escalar"] = str(error_escalamiento)
+
             log_ejecucion["resumen_final"] = f"[FALLA TÉCNICA — escalado automáticamente] {e}"
             log_ejecucion["error_tecnico"] = True
 
