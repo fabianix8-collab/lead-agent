@@ -1,0 +1,13 @@
+google-genai>=1.0.0
+python-dotenv>=1.0.0
+pydantic>=2.7.0
+rich>=13.7.0
+
+# Solo si usas LLM_PROVIDER=anthropic (pago)
+# anthropic>=0.40.0
+
+# Dependencias reales (solo necesarias en MODE=real)
+# google-api-python-client>=2.100.0
+# google-auth-oauthlib>=1.2.0
+# pyairtable>=2.3.0
+# slack-sdk>=3.27.0

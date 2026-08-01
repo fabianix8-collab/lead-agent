@@ -1,0 +1,50 @@
+[
+  {
+    "id": "lead-001",
+    "nombre": "Camila Rojas",
+    "email": "camila.rojas@constructoraandes.cl",
+    "empresa": "Constructora Andes",
+    "asunto": "Cotización urgente para software de gestión de proyectos",
+    "cuerpo": "Hola, necesitamos implementar un sistema de gestión de proyectos para 3 obras activas. Tenemos presupuesto aprobado y queremos partir este mes. ¿Podemos agendar una reunión esta semana?"
+  },
+  {
+    "id": "lead-002",
+    "nombre": "Jorge Muñoz",
+    "email": "jorge.munoz@gmail.com",
+    "empresa": "",
+    "asunto": "Consulta general",
+    "cuerpo": "Hola, vi su página web, ¿qué servicios ofrecen? Estoy averiguando opciones para el futuro, sin apuro."
+  },
+  {
+    "id": "lead-003",
+    "nombre": "GANA DINERO YA",
+    "email": "promo123@ofertas-increibles.biz",
+    "empresa": "",
+    "asunto": "!!! OFERTA EXCLUSIVA SOLO HOY !!!",
+    "cuerpo": "Haz click aqui para ganar un premio increible, no dejes pasar esta oportunidad unica clickea ahora."
+  },
+  {
+    "id": "lead-004",
+    "nombre": "Valentina Soto",
+    "email": "vsoto@retailmax.cl",
+    "empresa": "RetailMax",
+    "asunto": "Reunión urgente - integración con nuestro ERP",
+    "cuerpo": "Buenas, somos RetailMax, 40 tiendas a nivel nacional. Necesitamos evaluar su solución para integrarla con nuestro ERP interno. Es prioritario para nosotros, ¿tienen disponibilidad mañana o pasado?"
+  },
+  {
+    "id": "lead-005",
+    "nombre": "Camila Rojas",
+    "email": "camila.rojas@constructoraandes.cl",
+    "empresa": "Constructora Andes",
+    "asunto": "RE: Cotización urgente para software de gestión de proyectos",
+    "cuerpo": "Hola de nuevo, quería confirmar si recibieron mi correo anterior sobre la cotización."
+  },
+  {
+    "id": "lead-006",
+    "nombre": "N/A",
+    "email": "contacto@empresa-sinnombre.com",
+    "empresa": "",
+    "asunto": "info",
+    "cuerpo": "hola"
+  }
+]

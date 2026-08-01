@@ -1,0 +1,5 @@
+.env
+__pycache__/
+*.pyc
+resultado_demo.json
+mock_data/crm_store.json
