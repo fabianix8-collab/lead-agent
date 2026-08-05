@@ -1,8 +1,21 @@
 # Lead Agent — Agente Autónomo de Gestión de Leads
 
+![Tests](https://github.com/TU_USUARIO/lead-agent/actions/workflows/tests.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 Agente de IA con tool-calling que automatiza el flujo completo de un lead entrante:
 lectura → clasificación → acción (crear contacto en CRM, agendar reunión, o escalar
 a un humano cuando hay ambigüedad) — sin intervención manual en el caso feliz.
+
+## Capturas
+
+> _Agrega aquí una captura real de `python demo.py` corriendo, y otra de la
+> tabla de `python -m eval.run_eval` con el 8/8 — guárdalas en una carpeta
+> `docs/` dentro del repo y enlázalas así:_
+> `![demo](docs/demo.png)` / `![eval](docs/eval.png)`
+>
+> Es la diferencia entre que alguien lea 190 líneas de README o entienda el
+> proyecto en 10 segundos de scroll.
 
 ## Por qué este proyecto (y no un chatbot más)
 
@@ -182,9 +195,25 @@ arreglar un caso puede introducir una regresión en otro — por eso un set
 de evaluación repetible no es opcional una vez que el prompt tiene más de
 2-3 reglas.
 
-## Roadmap v2 (para mencionar como "próximos pasos" en la entrevista)
+## Roadmap v2
 
 - Memoria entre conversaciones (mismo lead escribe de nuevo → contexto persistente)
 - Fine-tuning del umbral de confianza con datos reales de escalamiento
 - Panel de control (Streamlit) con métricas en tiempo real
 - Envío de respuesta automática al lead en casos de alta confianza
+
+## Integración continua
+
+Cada push a `main` corre automáticamente el set de tests (`tests/`) vía
+GitHub Actions — ver `.github/workflows/tests.yml`. No requiere ninguna
+API key: esos tests solo ejercitan el dispatcher de tools en modo mock,
+no llaman al LLM.
+
+## Licencia
+
+MIT — ver [LICENSE](LICENSE).
+
+## Autor
+
+Fabián Baeza — Ingeniería en Informática, DUOC UC.
+

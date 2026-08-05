@@ -1,5 +1,28 @@
+# Credenciales — NUNCA subir
 .env
+
+# Python
 __pycache__/
 *.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Output generado por corridas — no es código, no se versiona
 resultado_demo.json
+eval/eval_results.json
 mock_data/crm_store.json
+
+# Entornos virtuales (si usas alguno)
+venv/
+.venv/
+env/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
