@@ -1,6 +1,6 @@
 # Lead Agent — Agente Autónomo de Gestión de Leads
 
-![Tests](https://github.com/TU_USUARIO/lead-agent/actions/workflows/tests.yml/badge.svg)
+![Tests](https://github.com/fabianix8-collab/lead-agent/actions/workflows/tests.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Agente de IA con tool-calling que automatiza el flujo completo de un lead entrante:
@@ -9,13 +9,11 @@ a un humano cuando hay ambigüedad) — sin intervención manual en el caso feli
 
 ## Capturas
 
-> _Agrega aquí una captura real de `python demo.py` corriendo, y otra de la
-> tabla de `python -m eval.run_eval` con el 8/8 — guárdalas en una carpeta
-> `docs/` dentro del repo y enlázalas así:_
-> `![demo](docs/demo.png)` / `![eval](docs/eval.png)`
->
-> Es la diferencia entre que alguien lea 190 líneas de README o entienda el
-> proyecto en 10 segundos de scroll.
+**Demo procesando leads:**
+![demo](docs/demo.png)
+
+**Evaluación sistemática (8/8 casos correctos):**
+![eval](docs/eval.png)
 
 ## Por qué este proyecto (y no un chatbot más)
 
